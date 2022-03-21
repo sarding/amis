@@ -170,12 +170,15 @@ export class Drawer extends React.Component<DrawerProps, DrawerState> {
   getDrawerStyle() {
     const {width, height, position} = this.props;
     const offsetStyle: {
-      width?: number | string,
-      height?: number | string
+      width?: number | string;
+      height?: number | string;
     } = {};
     if ((position === 'left' || position === 'right') && width !== undefined) {
       offsetStyle.width = width;
-    } else if ((position === 'top' || position === 'bottom') && height !== undefined) {
+    } else if (
+      (position === 'top' || position === 'bottom') &&
+      height !== undefined
+    ) {
       offsetStyle.height = height;
     }
     return offsetStyle;
@@ -204,6 +207,7 @@ export class Drawer extends React.Component<DrawerProps, DrawerState> {
         <Transition
           mountOnEnter
           unmountOnExit
+          appear
           in={show}
           timeout={500}
           onEnter={this.handleEnter}
